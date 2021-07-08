@@ -18,6 +18,9 @@ public class JobTests {
     // missing one field
     private static final Job missingOneFieldConstructor = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
+    // all fields empty
+    private static final Job missingALlFields = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+
 
     @Test
     public void testSettingJobId() {
@@ -77,5 +80,10 @@ public class JobTests {
 
         Assertions.assertTrue(missingOneFieldConstructor.toString().contains("Data not available"));
 
+    }
+
+    @Test
+    public void testForAllEmptyFields(){
+        Assertions.assertEquals("OOPS! This job does not seem to exist.", missingALlFields.toString());
     }
 }
